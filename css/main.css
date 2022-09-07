@@ -9,6 +9,7 @@ body {
 	min-height: 100vh;
 	background-image: url('../imgs/01.jpg');
 	background-size: cover;
+	animation: change 0.3s;
 }
 .landing-page .overlay {
 	background-color: #0009;
