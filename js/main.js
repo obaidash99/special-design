@@ -33,6 +33,11 @@ gearBox.addEventListener('click', () => {
 // Switch colors
 colorsList.forEach((color) => {
 	color.addEventListener('click', () => {
+		colorsList.forEach((color) => {
+			color.classList.remove('active');
+		});
 		color.classList.toggle('active');
+		var root = document.querySelector(':root');
+		root.style.setProperty('--main-color', color.dataset.color);
 	});
 });
