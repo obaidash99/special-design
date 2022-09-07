@@ -2,6 +2,7 @@ let settingsBox = document.querySelector('.settings-box');
 let gearBox = document.querySelector('.gear-box');
 let gear = document.querySelector('.fa-gear');
 let landingPage = document.querySelector('.landing-page');
+let colorsList = document.querySelectorAll('.colors-list li');
 
 // Get array of imgs
 let imgsArray = [
@@ -10,7 +11,6 @@ let imgsArray = [
 	'03.jpg',
 	'04.jpg',
 	'05.jpg',
-	'06.png',
 	'07.jpg',
 	'08.jpg',
 	'09.jpg',
@@ -28,4 +28,11 @@ setInterval(() => {
 gearBox.addEventListener('click', () => {
 	settingsBox.classList.toggle('open');
 	gear.classList.toggle('fa-spin');
+});
+
+// Switch colors
+colorsList.forEach((color) => {
+	color.addEventListener('click', () => {
+		color.classList.toggle('active');
+	});
 });
