@@ -1,4 +1,6 @@
-// Select Landing page element
+let settingsBox = document.querySelector('.settings-box');
+let gearBox = document.querySelector('.gear-box');
+let gear = document.querySelector('.fa-gear');
 let landingPage = document.querySelector('.landing-page');
 
 // Get array of imgs
@@ -21,4 +23,9 @@ setInterval(() => {
 
 	// Ghenge background img url
 	landingPage.style.backgroundImage = `url("imgs/${imgsArray[randomNumber]}")`;
-}, 2000);
+}, 10000);
+
+gearBox.addEventListener('click', () => {
+	settingsBox.classList.toggle('open');
+	gear.classList.toggle('fa-spin');
+});

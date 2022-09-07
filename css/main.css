@@ -4,6 +4,35 @@
 body {
 	font-family: 'Open Sans', sans-serif;
 }
+/* Start Setting box */
+.settings-box {
+	position: absolute;
+	left: -210px;
+	top: 0;
+	background-color: #fff;
+	width: 210px;
+	min-height: 100vh;
+	z-index: 10000;
+	transition: 0.3s;
+}
+.settings-box.open {
+	left: 0px;
+}
+.settings-box .gear-box {
+	position: absolute;
+	right: -32px;
+	top: 100px;
+	/* top: 50%;
+	transform: translateY(-50%); */
+	padding: 8px;
+	background-color: #fff;
+	cursor: pointer;
+	text-align: center;
+}
+.settings-box .fa-gear {
+	transition: 1s;
+}
+/* End Setting box */
 /* Start Landing page */
 .landing-page {
 	min-height: 100vh;
