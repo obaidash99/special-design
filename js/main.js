@@ -4,9 +4,19 @@ const gearBox = document.querySelector('.gear-box');
 const gear = document.querySelector('.fa-gear');
 const landingPage = document.querySelector('.landing-page');
 const colorsList = document.querySelectorAll('.colors-list li');
+const randomBgElements = document.querySelectorAll('.random-background span');
+const yesRandomOption = document.querySelector('.random-background .yes');
+const noRandomOption = document.querySelector('.random-background .no');
 
-// check if there is localstorage color option
+// Random Bg OPtion
+let backgroundOption = true;
+
+// Variable to control the Interval
+let bgInterval;
+
+// check if there is localstorage options
 const mainColors = localStorage.getItem('color_option');
+const randomBg = localStorage.getItem('random_bg_option');
 
 if (mainColors !== null) {
 	// set color from localstorage
@@ -17,6 +27,13 @@ if (mainColors !== null) {
 			color.classList.add('active');
 		}
 	});
+}
+if (randomBg === 'true') {
+	yesRandomOption.classList.add('active');
+	randomizeImgs();
+} else {
+	noRandomOption.classList.add('active');
+	clearInterval(bgInterval);
 }
 
 // Get array of imgs
@@ -32,13 +49,18 @@ let imgsArray = [
 	'10.jpg',
 ];
 
-setInterval(() => {
-	// get random number
-	let randomNumber = Math.floor(Math.random() * imgsArray.length);
+// Randomize Imgs Function
+function randomizeImgs() {
+	if (backgroundOption === true) {
+		bgInterval = setInterval(() => {
+			// get random number
+			let randomNumber = Math.floor(Math.random() * imgsArray.length);
 
-	// Ghange background img url
-	landingPage.style.backgroundImage = `url("imgs/${imgsArray[randomNumber]}")`;
-}, 10000);
+			// Ghange background img url
+			landingPage.style.backgroundImage = `url("imgs/${imgsArray[randomNumber]}")`;
+		}, 10000);
+	}
+}
 
 gearBox.addEventListener('click', () => {
 	settingsBox.classList.toggle('open');
@@ -60,16 +82,27 @@ colorsList.forEach((color) => {
 	});
 });
 
-// Elzero way //////////
-// Switch colors
-// const colorsLi = document.querySelectorAll('.colors-list li');
-// // loop on all list items
-// colorsLi.forEach((li) => {
-// 	// click on every list item
-// 	li.addEventListener('click', (e) => {
-// 		//set color on root
-// 		document.documentElement.style.setProperty('--main-color', e.target.dataset.color);
-//       localStorage.setItem('color_option', e.target.dataset.color);
+// Random background option
+randomBgElements.forEach((span) => {
+	span.addEventListener('click', () => {
+		// remove active class from others
+		randomBgElements.forEach((el) => {
+			el.classList.remove('active');
+		});
+		// add new active class
+		span.classList.add('active');
 
-// 	});
-// });
+		// control randomize function
+		if (span.dataset.bg === 'yes') {
+			backgroundOption = true;
+			randomizeImgs();
+			localStorage.setItem('random_bg_option', 'true');
+		} else {
+			backgroundOption = false;
+			clearInterval(bgInterval);
+			// back to img one
+			// landingPage.style.backgroundImage = `url("imgs/01.jpg")`;
+			localStorage.setItem('random_bg_option', 'false');
+		}
+	});
+});

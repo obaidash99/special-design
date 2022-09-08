@@ -80,6 +80,24 @@ body {
 .settings-box .option-box .colors-list li:nth-child(5) {
 	background-color: #03a9f4;
 }
+.settings-box .random-background .yes,
+.settings-box .random-background .no {
+	display: inline-block;
+	cursor: pointer;
+	color: white;
+	background-color: var(--main-color);
+	width: 60px;
+	margin-top: 10px;
+	padding: 2px 5px;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 4px;
+	opacity: 0.5;
+	transition: 0.3s;
+}
+.settings-box .random-background span.active {
+	opacity: 1;
+}
 /* End Setting box */
 /* Start Landing page */
 .landing-page {
