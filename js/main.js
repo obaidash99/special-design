@@ -8,6 +8,7 @@ const randomBgElements = document.querySelectorAll('.random-background span');
 const yesRandomOption = document.querySelector('.random-background .yes');
 const noRandomOption = document.querySelector('.random-background .no');
 const ourSkills = document.querySelector('.skills');
+const ourGallery = document.querySelectorAll('.gallery img');
 
 // Random Bg Option
 let backgroundOption = true;
@@ -128,3 +129,48 @@ window.onscroll = function () {
 		});
 	}
 };
+
+// Create PopUp For The Images
+ourGallery.forEach((img) => {
+	img.addEventListener('click', (e) => {
+		// create overlay element
+		let overlay = document.createElement('div');
+		overlay.className = 'popup-overlay';
+		document.body.appendChild(overlay);
+
+		// Create popup box
+		const popupBox = document.createElement('div');
+		popupBox.className = 'popup-box';
+
+		// Create Image Heading
+		let imgHeading = document.createElement('h3');
+		if (img.alt === '') {
+			imgHeading.textContent = `Unknown Image`;
+		} else {
+			imgHeading.textContent = `${img.alt}`;
+		}
+		popupBox.appendChild(imgHeading);
+
+		// Create Image
+		let popupImg = document.createElement('img');
+		popupImg.setAttribute('src', img.src);
+
+		popupBox.appendChild(popupImg);
+		overlay.appendChild(popupBox);
+
+		// Create Close Btn
+		let closeBtn = document.createElement('span');
+		closeBtn.textContent = 'X';
+
+		popupBox.appendChild(closeBtn);
+		// Close Options
+		closeBtn.addEventListener('click', () => {
+			popupBox.remove();
+			overlay.remove();
+		});
+		overlay.addEventListener('click', () => {
+			popupBox.remove();
+			overlay.remove();
+		});
+	});
+});
