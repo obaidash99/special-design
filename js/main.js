@@ -110,19 +110,18 @@ randomBgElements.forEach((span) => {
 
 randomizeImgs();
 
+// Increase Skills Level on Scroll
 window.onscroll = function () {
 	// Skills Offset Top
 	let skillsOffsetTop = ourSkills.offsetTop;
 	// Skills Outer Height
 	let skillsOuterHeight = ourSkills.offsetHeight;
 	// Window Height
-	let windowHeihgt = this.innerHeight;
+	let windowHeight = this.innerHeight;
 	// window Scroll Top
 	let windowScrollTop = this.pageYOffset;
 
-	if (windowScrollTop > skillsOffsetTop + skillsOuterHeight - windowHeihgt) {
-		console.log('.skill section');
-
+	if (windowScrollTop > skillsOffsetTop + skillsOuterHeight - windowHeight) {
 		let allSkills = document.querySelectorAll('.skill-box .skill-progress span');
 		allSkills.forEach((skill) => {
 			skill.style.width = skill.dataset.progress;
