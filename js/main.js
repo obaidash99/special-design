@@ -7,8 +7,9 @@ const colorsList = document.querySelectorAll('.colors-list li');
 const randomBgElements = document.querySelectorAll('.random-background span');
 const yesRandomOption = document.querySelector('.random-background .yes');
 const noRandomOption = document.querySelector('.random-background .no');
+const ourSkills = document.querySelector('.skills');
 
-// Random Bg OPtion
+// Random Bg Option
 let backgroundOption = true;
 
 // Variable to control the Interval
@@ -106,3 +107,25 @@ randomBgElements.forEach((span) => {
 		}
 	});
 });
+
+randomizeImgs();
+
+window.onscroll = function () {
+	// Skills Offset Top
+	let skillsOffsetTop = ourSkills.offsetTop;
+	// Skills Outer Height
+	let skillsOuterHeight = ourSkills.offsetHeight;
+	// Window Height
+	let windowHeihgt = this.innerHeight;
+	// window Scroll Top
+	let windowScrollTop = this.pageYOffset;
+
+	if (windowScrollTop > skillsOffsetTop + skillsOuterHeight - windowHeihgt) {
+		console.log('.skill section');
+
+		let allSkills = document.querySelectorAll('.skill-box .skill-progress span');
+		allSkills.forEach((skill) => {
+			skill.style.width = skill.dataset.progress;
+		});
+	}
+};
