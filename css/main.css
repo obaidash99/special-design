@@ -145,6 +145,7 @@ body {
 	font-weight: bold;
 	font-size: 25px;
 	color: var(--main-color);
+	cursor: pointer;
 }
 .header-area .links {
 	font-size: 15px;
