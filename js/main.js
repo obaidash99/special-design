@@ -9,6 +9,7 @@ const yesRandomOption = document.querySelector('.random-background .yes');
 const noRandomOption = document.querySelector('.random-background .no');
 const ourSkills = document.querySelector('.skills');
 const ourGallery = document.querySelectorAll('.gallery img');
+const allBullets = document.querySelectorAll('.nav-bullets .bullets');
 
 // Random Bg Option
 let backgroundOption = true;
@@ -179,6 +180,15 @@ ourGallery.forEach((img) => {
 		overlay.addEventListener('click', () => {
 			popupBox.remove();
 			overlay.remove();
+		});
+	});
+});
+
+// Nav Bullets Functionality
+allBullets.forEach((bullet) => {
+	bullet.addEventListener('click', (e) => {
+		document.querySelector(`.${e.target.dataset.section}`).scrollIntoView({
+			behavior: 'smooth',
 		});
 	});
 });
