@@ -79,7 +79,7 @@ function randomizeImgs() {
 
 			// Ghange background img url
 			landingPage.style.backgroundImage = `url("imgs/${imgsArray[randomNumber]}")`;
-		}, 10000);
+		}, 6000);
 	}
 }
 
@@ -224,3 +224,13 @@ bulletsSpan.forEach((span) => {
 		handleActive(e);
 	});
 });
+
+document.querySelector('.reset-options').onclick = function () {
+	// localStorage.clear(); not good if ther is something else in localstorge
+
+	localStorage.removeItem('color_option');
+	localStorage.removeItem('random_bg_option');
+	localStorage.removeItem('bullets_option');
+
+	window.location.reload();
+};
