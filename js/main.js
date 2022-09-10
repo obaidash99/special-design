@@ -4,7 +4,7 @@ const gearBox = document.querySelector('.gear-box');
 const gear = document.querySelector('.fa-gear');
 const landingPage = document.querySelector('.landing-page');
 const colorsList = document.querySelectorAll('.colors-list li');
-const randomBgElements = document.querySelectorAll('.random-background span');
+const randomBgElements = document.querySelectorAll('.option-box span');
 const yesRandomOption = document.querySelector('.random-background .yes');
 const noRandomOption = document.querySelector('.random-background .no');
 const ourSkills = document.querySelector('.skills');
@@ -80,13 +80,9 @@ gearBox.addEventListener('click', () => {
 
 // Switch colors
 colorsList.forEach((color) => {
-	color.addEventListener('click', () => {
-		// remove active class from others
-		colorsList.forEach((color) => {
-			color.classList.remove('active');
-		});
-		// add new active class
-		color.classList.toggle('active');
+	color.addEventListener('click', (e) => {
+		// remove active class from others & add new active class
+		handleActive(e);
 		root.style.setProperty('--main-color', color.dataset.color);
 		// save the color to localstorage
 		localStorage.setItem('color_option', color.dataset.color);
@@ -95,13 +91,9 @@ colorsList.forEach((color) => {
 
 // Random background option
 randomBgElements.forEach((span) => {
-	span.addEventListener('click', () => {
-		// remove active class from others
-		randomBgElements.forEach((el) => {
-			el.classList.remove('active');
-		});
-		// add new active class
-		span.classList.add('active');
+	span.addEventListener('click', (e) => {
+		// remove active class from others & add new active class
+		handleActive(e);
 
 		// control randomize function
 		if (span.dataset.bg === 'yes') {
@@ -117,8 +109,6 @@ randomBgElements.forEach((span) => {
 		}
 	});
 });
-
-randomizeImgs();
 
 // Increase Skills Level on Scroll
 window.onscroll = function () {
@@ -192,3 +182,13 @@ allBullets.forEach((bullet) => {
 		});
 	});
 });
+
+// Hnadle active status Function
+function handleActive(ev) {
+	// Remove active class from all childrens
+	ev.target.parentElement.querySelectorAll('.active').forEach((element) => {
+		element.classList.remove('active');
+	});
+	// Add active class on self
+	ev.target.classList.add('active');
+}
