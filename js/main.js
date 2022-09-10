@@ -4,12 +4,14 @@ const gearBox = document.querySelector('.gear-box');
 const gear = document.querySelector('.fa-gear');
 const landingPage = document.querySelector('.landing-page');
 const colorsList = document.querySelectorAll('.colors-list li');
-const randomBgElements = document.querySelectorAll('.option-box span');
+const randomBgElements = document.querySelectorAll('.random-background span');
 const yesRandomOption = document.querySelector('.random-background .yes');
 const noRandomOption = document.querySelector('.random-background .no');
 const ourSkills = document.querySelector('.skills');
 const ourGallery = document.querySelectorAll('.gallery img');
 const allBullets = document.querySelectorAll('.nav-bullets .bullets');
+const bulletsSpan = document.querySelectorAll('.bullets-option span');
+const bulletsContainer = document.querySelector('.nav-bullets');
 
 // Random Bg Option
 let backgroundOption = true;
@@ -20,6 +22,7 @@ let bgInterval;
 // check if there is localstorage options
 const mainColors = localStorage.getItem('color_option');
 const randomBg = localStorage.getItem('random_bg_option');
+const bulletOption = localStorage.getItem('bullets_option');
 
 if (mainColors !== null) {
 	// set color from localstorage
@@ -31,12 +34,27 @@ if (mainColors !== null) {
 		}
 	});
 }
+
 if (randomBg === 'true') {
 	yesRandomOption.classList.add('active');
 	randomizeImgs();
 } else {
 	noRandomOption.classList.add('active');
 	clearInterval(bgInterval);
+}
+
+if (bulletOption !== null) {
+	bulletsSpan.forEach((span) => {
+		span.classList.remove('active');
+	});
+
+	if (bulletOption === 'block') {
+		bulletsContainer.style.display = 'block';
+		document.querySelector('.bullets-option .yes').classList.add('active');
+	} else {
+		bulletsContainer.style.display = 'none';
+		document.querySelector('.bullets-option .no').classList.add('active');
+	}
 }
 
 // Get array of imgs
@@ -192,3 +210,17 @@ function handleActive(ev) {
 	// Add active class on self
 	ev.target.classList.add('active');
 }
+
+// Nav Bullets Option
+bulletsSpan.forEach((span) => {
+	span.addEventListener('click', (e) => {
+		if (span.dataset.display === 'show') {
+			bulletsContainer.style.display = 'block';
+			localStorage.setItem('bullets_option', 'block');
+		} else {
+			bulletsContainer.style.display = 'none';
+			localStorage.setItem('bullets_option', 'none');
+		}
+		handleActive(e);
+	});
+});
