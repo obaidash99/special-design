@@ -106,6 +106,14 @@ body {
 .settings-box .random-background span.active {
 	opacity: 1;
 }
+.overlay-setting.active {
+	height: 100vh;
+	width: calc(100% - 210px);
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 9000;
+}
 /* End Setting box */
 /* Start Landing page */
 .landing-page {

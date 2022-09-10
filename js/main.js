@@ -64,9 +64,17 @@ function randomizeImgs() {
 	}
 }
 
+// Control setting box
 gearBox.addEventListener('click', () => {
 	settingsBox.classList.toggle('open');
 	gear.classList.toggle('fa-spin');
+	document.querySelector('.overlay-setting').classList.toggle('active');
+	// Close setting box on click outside
+	document.querySelector('.overlay-setting.active').onclick = () => {
+		document.querySelector('.overlay-setting.active').classList.remove('active');
+		settingsBox.classList.remove('open');
+		gear.classList.toggle('fa-spin');
+	};
 });
 
 // Switch colors
