@@ -197,6 +197,16 @@ body {
 	cursor: default;
 	pointer-events: none;
 }
+@media (max-width: 575px) {
+	.nav-bullets {
+		width: 35px;
+	}
+	.nav-bullets .bullets {
+		width: 15px;
+		height: 15px;
+		margin: 8px auto;
+	}
+}
 /* End Bullet */
 /* Start Landing page */
 .landing-page {
