@@ -79,7 +79,7 @@ function randomizeImgs() {
 
 			// Ghange background img url
 			landingPage.style.backgroundImage = `url("imgs/${imgsArray[randomNumber]}")`;
-		}, 6000);
+		}, 3000);
 	}
 }
 

@@ -108,7 +108,7 @@ body {
 	opacity: 1;
 }
 .overlay-setting.active {
-	height: 100vh;
+	height: 1000vh;
 	width: calc(100% - 210px);
 	position: absolute;
 	top: 0;
@@ -611,3 +611,95 @@ body {
 	margin: 0;
 }
 /* End Testmoinals */
+/* Start Contact US */
+.contact {
+	min-height: 600px;
+	background-image: url('../imgs/contact.png');
+	background-size: cover;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	position: relative;
+}
+.contact .container {
+	position: relative;
+	z-index: 2;
+}
+.contact .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+.contact h2 {
+	font-weight: bold;
+	font-size: 30px;
+	color: var(--main-color);
+	margin: 0 0 60px;
+	text-align: center;
+}
+.contact form {
+	overflow: hidden;
+	max-width: 800px;
+	margin: auto;
+	padding: 5px;
+}
+.contact form .left {
+	float: left;
+	width: 49%;
+}
+.contact form .right {
+	float: right;
+	width: 49%;
+}
+.contact form input:not([type='submit']),
+.contact form textarea {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	background-color: rgba(218, 218, 218, 0.19);
+}
+.contact form input:not([type='submit']):focus,
+.contact form textarea:focus {
+	outline: 1px solid var(--main-color);
+}
+.contact form input {
+	height: 40px;
+}
+.contact form textarea {
+	height: 150px;
+}
+.contact form input[type='submit'] {
+	padding: 10px;
+	width: 100%;
+	border-color: transparent;
+	background-color: var(--main-color);
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+.contact form textarea:focus::-moz-placeholder,
+.contact form input:not([type='submit']):focus::-moz-placeholder {
+	opacity: 0;
+	transition: all 0.3s;
+}
+.contact form textarea:focus:-moz-placeholder,
+.contact form input:not([type='submit']):focus:-moz-placeholder {
+	opacity: 0;
+	transition: all 0.3s;
+}
+.contact form textarea:focus::-webkit-input-placeholder,
+.contact form input:not([type='submit']):focus::-webkit-input-placeholder {
+	opacity: 0;
+	transition: all 0.3s;
+}
+.contact form textarea:focus::-ms-input-placeholder,
+.contact form input:not([type='submit']):focus::-ms-input-placeholder {
+	opacity: 0;
+	transition: all 0.3s;
+}
+
+/* End Contact US */
