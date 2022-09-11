@@ -9,7 +9,6 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 .container {
-	width: 1170px;
 	padding-left: 15px;
 	padding-right: 15px;
 	margin: auto;
@@ -231,14 +230,14 @@ body {
 	color: var(--main-color);
 	cursor: pointer;
 }
+.header-area .links-container {
+	width: 100%;
+	text-align: right;
+}
 .header-area .links {
-	font-size: 15px;
 	list-style: none;
 	padding: 0;
 	width: 100%;
-	text-align: right;
-	padding-left: 0;
-	padding-right: 20px;
 }
 .header-area .links li {
 	display: inline;
@@ -252,6 +251,31 @@ body {
 .header-area .links li a:hover,
 .header-area .links li a.active {
 	color: var(--main-color);
+}
+.header-area .toggle-menu {
+	background: none;
+	border: none;
+	width: 35px;
+	cursor: pointer;
+	margin-top: 23px;
+	display: none;
+}
+.header-area .toggle-menu:focus {
+	outline: none;
+}
+.header-area .toggle-menu span {
+	display: block;
+	background-color: #fff;
+	height: 3px;
+	margin-bottom: 4px;
+}
+@media (max-width: 991px) {
+	.header-area .links {
+		display: none;
+	}
+	.header-area .toggle-menu {
+		display: inline-block;
+	}
 }
 .introduction {
 	position: absolute;
