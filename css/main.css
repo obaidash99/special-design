@@ -759,6 +759,26 @@ body {
 	color: #707070;
 	margin: 0;
 }
+@media (max-width: 991px) {
+	.testimonials .ts-box .person-info {
+		text-align: center;
+		overflow: visible;
+	}
+	.testimonials .ts-box .person-info img {
+		float: none;
+		margin-right: 0px;
+	}
+}
+@media (max-width: 767px) {
+	.testimonials h2 {
+		text-align: center;
+	}
+	.testimonials .ts-box {
+		width: 100%;
+		float: none;
+		margin-bottom: 15px;
+	}
+}
 /* End Testmoinals */
 /* Start Contact US */
 .contact {
@@ -850,5 +870,11 @@ body {
 	opacity: 0;
 	transition: all 0.3s;
 }
-
+@media (max-width: 767px) {
+	.contact form .left,
+	.contact form .right {
+		float: none;
+		width: 100%;
+	}
+}
 /* End Contact US */
