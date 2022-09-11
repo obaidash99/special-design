@@ -878,3 +878,11 @@ body {
 	}
 }
 /* End Contact US */
+/* Footer */
+.footer {
+	background-color: rgb(61, 61, 61);
+	color: white;
+	padding: 20px;
+	text-align: center;
+}
+/* End Footer */
