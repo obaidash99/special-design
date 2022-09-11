@@ -623,6 +623,21 @@ body {
 	border-color: transparent #fff transparent transparent;
 	left: -19px;
 }
+@media (max-width: 767px) {
+	.timeline .timeline-content .left,
+	.timeline .timeline-content .right {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.timeline .timeline-content .left::before,
+	.timeline .timeline-content .right::before {
+		display: none;
+	}
+	.timeline .timeline-content .left .content::before,
+	.timeline .timeline-content .right .content::before {
+		display: none;
+	}
+}
 /* End Timleine */
 /* Srart Features */
 .features {
@@ -665,6 +680,16 @@ body {
 	margin: auto;
 	line-height: 1.7;
 	color: #706f6f;
+}
+@media (max-width: 991px) {
+	.features .feat-box {
+		width: calc((100% / 2));
+	}
+}
+@media (max-width: 575px) {
+	.features .feat-box {
+		width: 100%;
+	}
 }
 /* End Features */
 /* Start Testmoinals */
