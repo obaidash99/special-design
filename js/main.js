@@ -13,6 +13,9 @@ const allBullets = document.querySelectorAll('.nav-bullets .bullets');
 const bulletsSpan = document.querySelectorAll('.bullets-option span');
 const bulletsContainer = document.querySelector('.nav-bullets');
 
+const toggleMenu = document.querySelector('.toggle-menu');
+const menuLinks = document.querySelector('.landing-page .links');
+
 // Random Bg Option
 let backgroundOption = true;
 
@@ -233,4 +236,30 @@ document.querySelector('.reset-options').onclick = function () {
 	localStorage.removeItem('bullets_option');
 
 	window.location.reload();
+};
+
+// Toggle Menu Links with Burger icon
+toggleMenu.onclick = function (e) {
+	// Stop Propagation
+	e.stopPropagation();
+
+	this.classList.toggle('active');
+	menuLinks.classList.toggle('active');
+};
+
+// Click anywhere to close the menu
+document.addEventListener('click', (e) => {
+	if (e.target !== toggleMenu && e.target !== menuLinks) {
+		// check if menu is active or open
+		if (menuLinks.classList.contains('active')) {
+			// Remove active class from menu and burger icon
+			menuLinks.classList.remove('active');
+			toggleMenu.classList.remove('active');
+		}
+	}
+});
+
+// Stop Propagation on Menu
+menuLinks.onclick = function (e) {
+	e.stopPropagation();
 };

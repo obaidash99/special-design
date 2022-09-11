@@ -260,6 +260,17 @@ body {
 	margin-top: 23px;
 	display: none;
 }
+.header-area .toggle-menu.active::before {
+	content: '';
+	position: absolute;
+	border-width: 10px;
+	border-style: solid;
+	border-color: transparent transparent white transparent;
+	bottom: -10px;
+	left: 8px;
+	display: block;
+	z-index: 10;
+}
 .header-area .toggle-menu:focus {
 	outline: none;
 }
@@ -273,9 +284,40 @@ body {
 	.header-area .links {
 		display: none;
 	}
+	.header-area .links.active {
+		background-color: #fff;
+		padding: 10px 0;
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 50px;
+		width: 50%;
+		border-radius: 4px;
+		text-align: center;
+		z-index: 10;
+	}
+	.header-area .links.active li {
+		display: block;
+		margin: 10px;
+	}
+	.header-area .links.active li a {
+		color: var(--main-color);
+		font-weight: bold;
+	}
 	.header-area .toggle-menu {
 		display: inline-block;
+		position: relative;
+		z-index: 10;
 	}
+}
+.landing-page .overlay-menu.active {
+	position: absolute;
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 9;
 }
 .introduction {
 	position: absolute;
