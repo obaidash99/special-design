@@ -14,6 +14,32 @@ body {
 	padding-right: 15px;
 	margin: auto;
 }
+/* Start Responsive Grid System */
+@media (min-width: 576px) {
+	/* Small devices => phones */
+	.container {
+		max-width: 540px;
+	}
+}
+@media (min-width: 768px) {
+	/* Medium devices => Tblets */
+	.container {
+		max-width: 720px;
+	}
+}
+@media (min-width: 992px) {
+	/* Large devices => Desktop */
+	.container {
+		max-width: 960px;
+	}
+}
+@media (min-width: 1200px) {
+	/* XLarge devices */
+	.container {
+		max-width: 1140px;
+	}
+}
+/* End Responsive Grid System */
 /* Start Setting box */
 .settings-box {
 	position: absolute;
