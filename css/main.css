@@ -133,7 +133,7 @@ body {
 	opacity: 1;
 }
 .overlay-setting.active {
-	height: 1000vh;
+	height: 690vh;
 	width: calc(100% - 210px);
 	position: absolute;
 	top: 0;
