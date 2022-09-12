@@ -13,6 +13,10 @@ const allBullets = document.querySelectorAll('.nav-bullets .bullets');
 const bulletsSpan = document.querySelectorAll('.bullets-option span');
 const bulletsContainer = document.querySelector('.nav-bullets');
 
+const scrollOoption = document.querySelectorAll('.scroll-option span');
+const yesScrollOption = document.querySelector('.scroll-option .yes');
+const noScrollOption = document.querySelector('.scroll-option .no');
+
 const toggleMenu = document.querySelector('.toggle-menu');
 const menuLinks = document.querySelector('.landing-page .links');
 
@@ -26,6 +30,7 @@ let bgInterval;
 const mainColors = localStorage.getItem('color_option');
 const randomBg = localStorage.getItem('random_bg_option');
 const bulletOption = localStorage.getItem('bullets_option');
+const localScrollOption = localStorage.getItem('scroll_option');
 
 if (mainColors !== null) {
 	// set color from localstorage
@@ -33,6 +38,12 @@ if (mainColors !== null) {
 	//  add active class to the current color
 	colorsList.forEach((color) => {
 		if (color.dataset.color === mainColors) {
+			color.classList.add('active');
+		}
+	});
+} else {
+	colorsList.forEach((color) => {
+		if (color.dataset.color === '#ff9800') {
 			color.classList.add('active');
 		}
 	});
@@ -57,6 +68,20 @@ if (bulletOption !== null) {
 	} else {
 		bulletsContainer.style.display = 'none';
 		document.querySelector('.bullets-option .no').classList.add('active');
+	}
+}
+
+if (localScrollOption !== null) {
+	scrollOoption.forEach((span) => {
+		span.classList.remove('active');
+	});
+
+	if (localScrollOption === 'yes') {
+		document.querySelector('.header-area').classList.add('scroll');
+		yesScrollOption.classList.add('active');
+	} else {
+		document.querySelector('.header-area').classList.remove('scroll');
+		noScrollOption.classList.add('active');
 	}
 }
 
@@ -131,16 +156,36 @@ randomBgElements.forEach((span) => {
 	});
 });
 
+// Scroll Nav Bar Option
+scrollOoption.forEach((span) => {
+	span.addEventListener('click', (e) => {
+		handleActive(e);
+
+		// Functionality
+		if (span.dataset.scroll === 'yes') {
+			document.querySelector('.header-area').classList.add('scroll');
+			localStorage.setItem('scroll_option', 'yes');
+		} else {
+			document.querySelector('.header-area').classList.toggle('scroll');
+			localStorage.setItem('scroll_option', 'no');
+		}
+	});
+});
+
 // Increase Skills Level on Scroll
 window.onscroll = function () {
 	// Skills Offset Top
 	let skillsOffsetTop = ourSkills.offsetTop;
+	// console.log(skillsOffsetTop)
 	// Skills Outer Height
 	let skillsOuterHeight = ourSkills.offsetHeight;
+	// console.log(skillsOuterHeight);
 	// Window Height
 	let windowHeight = this.innerHeight;
+	// console.log(windowHeight);
 	// window Scroll Top
 	let windowScrollTop = this.pageYOffset;
+	// console.log(windowScrollTop);
 
 	if (windowScrollTop > skillsOffsetTop + skillsOuterHeight - windowHeight) {
 		let allSkills = document.querySelectorAll('.skill-box .skill-progress span');
@@ -234,6 +279,7 @@ document.querySelector('.reset-options').onclick = function () {
 	localStorage.removeItem('color_option');
 	localStorage.removeItem('random_bg_option');
 	localStorage.removeItem('bullets_option');
+	localStorage.removeItem('scroll_option');
 
 	window.location.reload();
 };
