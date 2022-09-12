@@ -324,6 +324,9 @@ body {
 	display: block;
 	z-index: 10;
 }
+.header-area.scroll .toggle-menu.active::before {
+	bottom: -40px;
+}
 .header-area .toggle-menu:focus {
 	outline: none;
 }
@@ -354,6 +357,10 @@ body {
 		border-radius: 4px;
 		text-align: center;
 		z-index: 10;
+	}
+	.header-area.scroll .links.active {
+		right: 10px;
+		top: 75px;
 	}
 	.header-area .links.active li {
 		display: block;
